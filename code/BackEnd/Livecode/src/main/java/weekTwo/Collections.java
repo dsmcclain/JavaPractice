@@ -8,7 +8,7 @@ public class Collections {
     }
 
     public static void listDemo() {
-        // lists are nice because you don't need to specify a size beforehand like with Arrays
+        // lists are nice because you don't need tdo specify a size beforehand like with Arrays
         // ArrayList is essentially just an array with some automatic resizing under the hood
         List<Integer> linit = new ArrayList<>();
         linit.add(10);
