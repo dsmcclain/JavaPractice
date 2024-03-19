@@ -13,11 +13,19 @@ public class Adopter {
 
     @java.lang.Override
     public java.lang.String toString() {
-        return STR."Adopter{id=\{id}, name='\{name}\{'\''}, phoneNumber=\{phoneNumber}, adoptionDate=\{adoptionDate}, petType=\{petType.toString()}, petName='\{petName}\{'\''}, petBreed='\{petBreed}\{'\''}\{'}'}";
+        return STR."""
+                Adopter{id=\{id}, name='\{name}', phoneNumber=\{phoneNumber}, \
+                adoptionDate=\{adoptionDate}, petType=\{petType.toString()}, \
+                petName='\{petName}', petBreed='\{petBreed}'}
+               """;
+
     }
 
     public Adopter(int id, String name, int phoneNumber, LocalDate adoptionDate, Animal animal) {
+        Validate.isTrue(id > 0, "ID must be a positive integer");
         Validate.notBlank(name, "Name cannot be blank");
+        Validate.notNull(animal, "Animal cannot be null");
+        Validate.inclusiveBetween(1000000,9999999, phoneNumber, "Phone number must be 7 digits");
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
