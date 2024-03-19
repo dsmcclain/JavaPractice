@@ -1,9 +1,19 @@
-public class Animal {
-    private final String name;
-    private final AnimalType type;
-    private final String breed;
+import org.apache.commons.lang3.Validate;
 
+public class Animal {
+    private String name;
+    private AnimalType type;
+    private String breed;
+
+    public Animal(String name, AnimalType type) {
+        init(name, type, null);
+    }
     public Animal(String name, AnimalType type, String breed) {
+        init(name, type, breed);
+    }
+
+    public void init(String name, AnimalType type, String breed) {
+        Validate.notBlank(name, "Name cannot be blank");
         this.name = name;
         this.type = type;
         this.breed = breed;
