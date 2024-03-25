@@ -1,3 +1,5 @@
+package models;
+
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
@@ -9,20 +11,20 @@ public class TestAnimal {
     @Test
     public void TestNameValidation() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            var animal = new Animal("", AnimalType.CAT);
+            var animal = new Animal(1, "", AnimalType.CAT);
         });
         assertTrue(exception.getMessage().contains("Name cannot be blank"));
     }
 
     @Test
     public void TestNullBreed() {
-        var animal = new Animal("Joey", AnimalType.DOG);
+        var animal = new Animal(1, "Joey", AnimalType.DOG);
         assertThat(animal, instanceOf(Animal.class));
     }
 
     @Test
     public void TestAcceptsBreed() {
-        var animal = new Animal("Joey", AnimalType.DOG, "Dachshund");
+        var animal = new Animal(1, "Joey", AnimalType.DOG, "Dachshund");
         assertThat(animal, instanceOf(Animal.class));
     }
 }

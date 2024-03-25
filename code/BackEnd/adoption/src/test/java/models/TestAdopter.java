@@ -1,3 +1,5 @@
+package models;
+
 import org.junit.Test;
 
 import java.time.LocalDate;
@@ -5,7 +7,7 @@ import java.time.LocalDate;
 import static org.junit.Assert.*;
 
 public class TestAdopter {
-    Animal validAnimal = new Animal("Theo", AnimalType.CAT, "Siamese");
+    Animal validAnimal = new Animal(1, "Theo", AnimalType.CAT, "Siamese");
     Animal nullAnimal = null;
 
     @Test

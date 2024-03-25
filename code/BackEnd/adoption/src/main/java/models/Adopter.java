@@ -1,8 +1,10 @@
+package models;
+
 import org.apache.commons.lang3.Validate;
 
 import java.time.LocalDate;
 
-public class Adopter {
+public class Adopter implements Entity {
     private int id;
     private String name;
     private int phoneNumber;
@@ -10,16 +12,6 @@ public class Adopter {
     private AnimalType petType;
     private String petName;
     private String petBreed;
-
-    @java.lang.Override
-    public java.lang.String toString() {
-        return STR."""
-                Adopter{id=\{id}, name='\{name}', phoneNumber=\{phoneNumber}, \
-                adoptionDate=\{adoptionDate}, petType=\{petType.toString()}, \
-                petName='\{petName}', petBreed='\{petBreed}'}
-               """;
-
-    }
 
     public Adopter(int id, String name, int phoneNumber, LocalDate adoptionDate, Animal animal) {
         Validate.isTrue(id > 0, "ID must be a positive integer");
@@ -43,6 +35,7 @@ public class Adopter {
         this.id = id;
     }
 
+    @Override
     public String getName() {
         return name;
     }
@@ -91,6 +84,13 @@ public class Adopter {
         this.petBreed = petBreed;
     }
 
+    @java.lang.Override
+    public java.lang.String toString() {
+        return STR."""
+            Adopter{id=\{id}, name='\{name}', phoneNumber=\{phoneNumber}, \
+            adoptionDate=\{adoptionDate}, petType=\{petType.toString()}, \
+            petName='\{petName}', petBreed='\{petBreed}'}
+           """;
 
-
+    }
 }
