@@ -7,9 +7,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.MockedStatic;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
+import static java.util.Map.entry;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
@@ -19,7 +20,7 @@ public class TestAnimalService {
 
     @Before
     public void initialize() {
-        animalDatabase.list = new ArrayList<>(List.of(animal));
+        animalDatabase.list = new HashMap<Integer, Animal>  (Map.ofEntries(entry(animal.getId(), animal)));
     }
 
     @Test
@@ -79,7 +80,7 @@ public class TestAnimalService {
             DBService animalService = DBServiceFactory.create("Animal");
 
             assertEquals(animalService.count(), 1);
-            Animal newAnimal = new Animal(1, "New Animal", AnimalType.CAT);
+            Animal newAnimal = new Animal(2, "New Animal", AnimalType.CAT);
             animalService.add(newAnimal);
 
             assertEquals(animalService.count(), 2);

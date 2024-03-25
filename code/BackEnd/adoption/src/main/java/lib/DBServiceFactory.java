@@ -1,14 +1,17 @@
 package lib;
 
+import db.AdopterDatabase;
+import db.AnimalDatabase;
 import org.apache.commons.lang3.NotImplementedException;
 
-public interface DBServiceFactory {
-   public static DBService create(String serviceType) {
-       if (serviceType.equals("Animal"))
-           return new AnimalService();
-       else if (serviceType.equals("Adopter"))
-           return new AdopterService();
-       else
-           throw new NotImplementedException(STR."Type '\{serviceType}' is not supported.");
-   }
+public class DBServiceFactory {
+    public static DBService create(String type) {
+        if (type.equals("Adopter")) {
+            return new AdopterService(AdopterDatabase.getInstance());
+        } else if (type.equals("Animal")) {
+            return new AnimalService(AnimalDatabase.getInstance());
+        } else {
+            throw new NotImplementedException(STR." Type \{type} is not supported");
+        }
+    }
 }

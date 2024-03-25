@@ -2,15 +2,12 @@ package db;
 
 import models.Animal;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AnimalDatabase {
     private static AnimalDatabase db = null;
-    public List<Animal> list;
-    private AnimalDatabase() {
-        list = new ArrayList<>(List.of());
-    }
+    public Map<Integer, Animal> list = new HashMap<>();
     public static synchronized AnimalDatabase getInstance() {
         if (db == null)
             db = new AnimalDatabase();

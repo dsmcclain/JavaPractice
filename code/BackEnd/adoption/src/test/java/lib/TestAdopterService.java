@@ -9,9 +9,10 @@ import org.junit.Test;
 import org.mockito.MockedStatic;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
+import static java.util.Map.entry;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
@@ -22,7 +23,7 @@ public class TestAdopterService {
 
     @Before
     public void initialize() {
-        adopterDatabase.list = new ArrayList<>(List.of(adopter));
+        adopterDatabase.list = new HashMap<Integer, Adopter>(Map.ofEntries(entry(adopter.getId(), adopter)));
     }
 
     @Test
